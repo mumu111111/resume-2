@@ -1,11 +1,17 @@
 body{
-    background: #efefef;
+    background: #EFEFEF;
     color: #000;
     margin: 0;
 }
 *{
     margin: 0;
     padding: 0;
+}
+ul,ol{
+   list-style: none; 
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight: normal;
 }
 a{
     color: inherit;
@@ -92,6 +98,8 @@ hr{
     margin-left: auto;
     margin-right: auto;
     background: #fff;
+    margin-top: -340px;
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.5);
 }
 .userCard .pictureAndText{
     padding: 50px;
@@ -140,19 +148,19 @@ hr{
     color: #9da0a7;
 }
 .userCard > footer.media{
-    background-color: #E6686A;
+    background-color: #E6686A; 
     text-align: center;
 }
 .userCard > footer.media a{
+    display: inline-block;
     width: 40px;
     line-height: 30px;
     padding: 5px 0;
     border-radius: 50%;
-    display: inline-block;
     margin: 16px;
 }
 .userCard > footer.media a:hover{
-    background: #CF5D5F;
+    background-color: #CF5D5F;    
 }
 .userCard svg{
     width: 30px;
@@ -160,3 +168,170 @@ hr{
     fill: white;
     vertical-align: top;
 }
+
+ body > main  .downloadResume-wrapper{
+   text-align: center;
+}
+body > main  .downloadResume-wrapper .downloadResume{
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: bold;
+    color: #3D4451;
+    padding: 21px 55px;
+    border: 1px solid #CDCFD1;
+    border-radius: 2px;
+    display: inline-block;
+    margin: 32px 0;
+    transition: box-shadow 0.3s;
+    background: #EFEFEF;
+}
+body > main  .downloadResume-wrapper .downloadResume:hover{
+    box-shadow: 0px 4px 16px 0px rgba(184,184,184,1);
+    
+}
+body > main .selfIntroduction{
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.8;
+    font-family: sans-serif;
+}
+
+section.skills,
+section.portfolio{
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+    border-radius: 2px;
+}
+section.skills > h2,
+section.portfolio > h2{
+    text-align: center;
+    font-size: 34px;
+    line-height: 1.2;
+    color: #3D4451;
+    font-weight: 600;
+}
+section.skills > ol{
+    margin-top: 30px;
+    background: #fff;
+    padding: 40px 50px 10px;
+    border-radius: 2px;
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.5);
+}
+.clearfix:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+section.skills > ol li{
+    float: left;
+    width: 48%;
+    box-sizing: border-box;
+}
+section.skills > ol li:nth-child(even){
+    float: right;
+}
+section.skills  h3{
+    font-size: 14px;
+    line-height: 1.1;
+}
+section.skills .progressBar{
+    
+    height: 5px;
+    background-color: #FAE1E1;
+    border-radius: 2px;
+    margin: 5px 0px 40px;
+}
+section.skills .progressBar .progress{
+    width: 30%;
+    height: 100%;
+    background: #E6686A;
+    border-radius: 2px;
+}
+section.portfolio{
+    text-align: center;
+}
+section.portfolio >nav{
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 32px;
+}
+section.portfolio >nav  ol{
+    margin: 0 auto;
+    display: inline-block;
+    vertical-align: top;
+}
+section.portfolio >nav  ol > li{
+    float: left;
+    margin-left: 40px;
+    cursor: pointer;
+}
+section.portfolio >nav  ol > li:first-child{
+    margin-left: 0;
+}
+section.portfolio >nav .bar{
+    height: 5px ;
+    background: #fff;
+    margin-top: 5px;
+    margin-bottom: 30px;
+    border-radius: 2px;
+}
+section.portfolio >nav .bar-inner{
+    height:  100%;
+    background: #E6686A;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+section.portfolio >nav .bar.state-1 .bar-inner{
+    width: 40px;
+    margin-left: 0;
+}
+section.portfolio >nav .bar.state-2 .bar-inner{
+    width: 70px;
+    margin-left: 60px;
+}
+section.portfolio >nav .bar.state-3 .bar-inner{
+    width: 100px;
+    margin-left: 140px;
+}
+section.portfolio .works{
+    position: relative;
+    height: 597px;
+    margin-bottom: 100px;
+}
+section.portfolio .works .big,
+section.portfolio .works .small{
+    position: absolute;
+}
+section.portfolio .works .big{
+    top: 0;
+    left: 0;
+}
+section.portfolio .works .top-small{
+    top: 0 ;
+    left: 645px;
+}
+section.portfolio .works .bottom-small{
+    top: 312px;
+    left: 645px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

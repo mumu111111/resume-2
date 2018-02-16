@@ -118,6 +118,7 @@ hr{
     float: left;
     margin-left: 17px;
     margin-right: 17px;
+    position: relative;
 }
 .topNavBar  nav > ul > li > a {
     font-size: 12px;
@@ -128,10 +129,61 @@ hr{
     padding-top: 5px;    
     padding-bottom: 5px;
     display: block;
+    position: relative;
 }
-.topNavBar  nav > ul > li > a:hover {
-    border-bottom: 3px solid  #F32F2F;
+
+
+
+
+.topNavBar  nav > ul > li.active > a::after {
+    /* border-bottom: 3px solid  #F32F2F; 以为border可能实现不了左右滑动的效果 */
+    content: '';
+    display: block; /*块级才能设宽度 */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #e06567;
+    animation: menuSlid 0.5s;
 }
+@keyframes menuSlid{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 100%;
+    }
+}
+
+
+.topNavBar .submenu{
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    color: #3d4451;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+.topNavBar li.active .submenu{
+    display: block;
+    animation: submenuSlide .4s;
+}
+@keyframes submenuSlide{
+    0%{
+        margin-right: 100%;
+    }
+    100%{
+        margin-right: 0%;
+    }
+}
+.topNavBar .submenu >li{
+    white-space: nowrap;
+    padding: 5px 10px;
+} 
+
+
 .topNavBar .logo{
     float: left;
     font-size: 24px;

@@ -30,18 +30,19 @@
 			</a>
 			<nav class="menu">
 				<ul class="clearfix">
-					<li><a href="#">关于</a></li>
-					<li><a href="#">技能</a></li>
+					<li><a href="#siteAbout">关于</a></li>
+					<li><a href="#siteSkills">技能</a></li>
 					<li>
-						<a href="#" >作品</a>
-						<ul class="submenu"><!-- 子菜单 -->
+						<a href="#sitePortfolio">作品</a>
+						<ul class="submenu">
+							<!-- 子菜单 -->
 							<li>作品1</li>
 							<li>作品2</li>
 							<li>作品3</li>
 						</ul>
 					</li>
 					<li>
-						<a href="#" >博客</a>
+						<a href="#">博客</a>
 						<ul class="submenu">
 							<li>博客1</li>
 							<li>博客2</li>
@@ -59,7 +60,7 @@
 		<div class="mask"></div>
 	</div>
 	<main>
-		<div class="userCard">
+		<div class="userCard" id="siteAbout">
 			<div class="pictureAndText clearfix">
 				<div class="picture">
 					<img src="./img/avatar.jpg" alt="头像">
@@ -109,7 +110,7 @@
 			<br>技能：前端开发
 		</p>
 	</main>
-	<section class="skills">
+	<section class="skills" id="siteSkills">
 		<h2>技能</h2>
 		<ol class="clearfix">
 			<li>
@@ -149,7 +150,7 @@
 				</div>
 			</li>
 	</section>
-	<section class="portfolio">
+	<section class="portfolio" id="sitePortfolio">
 		<h2>作品集</h2>
 		<nav>
 			<ol class="clearfix">
@@ -189,7 +190,7 @@
 			setTimeout(function () {
 				siteWelcome.classList.remove('active')
 			}, 1000)
-			
+
 			window.onscroll = function () {
 				if (window.scrollY > 0) {
 					topNavBar.classList.add('sticky')
@@ -199,21 +200,29 @@
 			}
 
 			// let liTags= document.getElementsByClassName('menuTrigger')
-			let liTags= document.querySelectorAll('nav.menu > ul >li')
+			let liTags = document.querySelectorAll('nav.menu > ul >li')
 			console.log(liTags)
-			for(let i=0; i<liTags.length; i++){
-				liTags[i].onmouseenter= function(x){
-					// console.log(e.target)
-					// console.log(e.currentTarget)
-					// let li= e.currentTarget
-					
-				    x.currentTarget.classList.add('active')
-				} 
-				liTags[i].onmouseleave= function(x){
-					// console.log(e.target)
-					// console.log(e.currentTarget)
-					
-				   x.currentTarget.classList.remove('active')
+			for (let i = 0; i < liTags.length; i++) {
+				liTags[i].onmouseenter = function (x) {
+					x.currentTarget.classList.add('active')
+				}
+				liTags[i].onmouseleave = function (x) {
+					x.currentTarget.classList.remove('active')
+				}
+			}
+
+			let aTags = document.querySelectorAll('nav.menu > ul > li > a')
+			for (let i = 0; i < aTags.length; i++) {
+				aTags[i].onclick = function (x) {
+					x.preventDefault()
+					let a = x.currentTarget
+					let href = a.getAttribute('href')
+					console.log(href)
+					let element = document.querySelector(href)
+					console.log(element)
+					let top = element.offsetTop
+					window.scrollTo(0, top - 80)
+
 				}
 			}
 	</script>

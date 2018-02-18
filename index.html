@@ -8,6 +8,7 @@
 	<title>我的简历</title>
 	<link rel="stylesheet" href="./css.css">
 	<script src="//at.alicdn.com/t/font_533667_05pux8slzlkawcdi.js"></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js'></script>
 	<style type="text/css">
 		.icon {
 			width: 1em;
@@ -221,24 +222,31 @@
 					let element = document.querySelector(href)
 					let top = element.offsetTop
 
-					var currentTop = window.scrollY
+					function animate(time) {
+						requestAnimationFrame(animate);
+						TWEEN.update(time);
+					}
+					requestAnimationFrame(animate);
 					var targetTop = top - 80
-					var T = 1000
-					var n = 25
-					var t = T / n
-					var S = targetTop - currentTop
-					var s = S / n
-					var i = 0
-					var id = setInterval(function () {
-						if (i === n) {
-							window.clearInterval(id)
-							return
-						}
-						i += 1
-						window.scrollTo(0, currentTop + s * i)
-					}, t)
+					var currentTop = window.scrollY
+					var s= targetTop- currentTop  //s 有时候是负数
+					var t=Math.abs((s/100)*300)
+					if(t>=500){ 
+						t=500
+					}
+					var coords = {y: currentTop } 
+					var tween = new TWEEN.Tween(coords) 
+						.to({y: targetTop },t)  //500ms 100像素 
+						.easing(TWEEN.Easing.Quadratic.InOut) 
+						.onUpdate(function () {
+							console.log(coords.y )
+							window.scrollTo(0, coords.y)//coords.y是 Tween计算的
+						})
+						.start(); 
+					}
+				
 				}
-			}
+			
 	</script>
 </body>
 

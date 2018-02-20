@@ -61,7 +61,7 @@
 		<div class="mask"></div>
 	</div>
 	<main>
-		<div class="userCard" id="siteAbout">
+		<div data-x class="userCard" id="siteAbout">
 			<div class="pictureAndText clearfix">
 				<div class="picture">
 					<img src="./img/avatar.jpg" alt="头像">
@@ -111,7 +111,7 @@
 			<br>技能：前端开发
 		</p>
 	</main>
-	<section class="skills" id="siteSkills">
+	<section data-x class="skills" id="siteSkills">
 		<h2>技能</h2>
 		<ol class="clearfix">
 			<li>
@@ -151,7 +151,7 @@
 				</div>
 			</li>
 	</section>
-	<section class="portfolio" id="sitePortfolio">
+	<section data-x class="portfolio" id="sitePortfolio">
 		<h2>作品集</h2>
 		<nav>
 			<ol class="clearfix">
@@ -198,6 +198,24 @@
 				} else {
 					topNavBar.classList.remove('sticky')
 				}
+
+				let specialTags = document.querySelectorAll('[data-x]')
+				let minIndex = 0
+				for (let i = 1; i < specialTags.length; i++) {
+					if (Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop - window.scrollY)) {
+						minIndex = i
+					}
+				}
+				// minIndex 就是里窗口顶部最近的元素
+				//specialTags[minIndex].classList.remove('offset')
+				let id = specialTags[minIndex].id
+				let a = document.querySelector('a[href="#' + id + '"]')
+				let li = a.parentNode
+				let brothersAndMe = li.parentNode.children
+				for (let i = 0; i < brothersAndMe.length; i++) {
+					brothersAndMe[i].classList.remove('highlight')
+				}
+				li.classList.add('highlight')
 			}
 
 			// let liTags= document.getElementsByClassName('menuTrigger')
@@ -229,24 +247,77 @@
 					requestAnimationFrame(animate);
 					var targetTop = top - 80
 					var currentTop = window.scrollY
-					var s= targetTop- currentTop  //s 有时候是负数
-					var t=Math.abs((s/100)*300)
-					if(t>=500){ 
-						t=500
+					var s = targetTop - currentTop  //s 有时候是负数
+					var t = Math.abs((s / 100) * 300)
+					if (t >= 500) {
+						t = 500
 					}
-					var coords = {y: currentTop } 
-					var tween = new TWEEN.Tween(coords) 
-						.to({y: targetTop },t)  //500ms 100像素 
-						.easing(TWEEN.Easing.Quadratic.InOut) 
+					var coords = { y: currentTop }
+					var tween = new TWEEN.Tween(coords)
+						.to({ y: targetTop }, t)  //500ms 100像素 
+						.easing(TWEEN.Easing.Quadratic.InOut)
 						.onUpdate(function () {
-							console.log(coords.y )
+							console.log(coords.y)
 							window.scrollTo(0, coords.y)//coords.y是 Tween计算的
 						})
-						.start(); 
-					}
-				
+						.start();
 				}
-			
+
+			}
+
+
+// 有3块  关于   技能 作品
+
+
+// 高亮导航栏  通过 计算 现在滑动的部分距离 顶部的远近  找到对应当前内容的导航高亮
+// 获取到每一块 到 顶部的距离  offsettOP
+// 获取到 当前滑动的元素的像素
+// 计算每一块的到顶部距离- 当前页面移动像素 ，比较 出最小的值
+//  获取到最小的值的元素 
+// 设置 css高亮  与滑动状态一致
+
+// 导航内容块 集合  
+// var specialTags= document.querySelectorAll('[data-x]')
+
+
+// // 找到距离最近的 内容块的下标
+// var minIndex=0
+// for(var i=1; i<specialTags.length; i++){
+// 	if(Math.abs(specialTags[i].offsetTop - window.scrollY)< Math.abs(specialTags[minIndex].offsetTop-window.scrollY)){
+// 		minIndex=i
+// 	}
+// }
+
+// // minIndex 就是 窗口 顶部最近的元素
+
+// let id= specialTags[minIndex].id
+// let a= document.querySelector('a[href="#'+id+'"]')
+// let li= a.parentNode
+// let brotherAndMe= li.parentNode.children
+// console.log("xxx"+id)
+// console.log(a)
+// console.log(li)
+
+// console.log(brotherAndMe)
+
+// for(let i=0; i< brotherAndMe.length; i++){
+// 	brotherAndMe[i].classList.remove('highlight')
+
+// }
+// console.log(li)
+// li.classList.add('highlight')
+
+
+
+
+
+
+//通过下标找到内容块   添加css
+
+// for(let i=0; i< specialTags.length; i++){
+// 	specialTags[i].classList.remove('active')
+// 	specialTags[minIndex].classList.add('active')
+// }
 	</script>
 </body>
 

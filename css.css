@@ -135,7 +135,8 @@ hr{
 
 
 
-.topNavBar  nav > ul > li.active > a::after {
+.topNavBar  nav > ul > li.active > a::after,
+.topNavBar  nav > ul > li.highlight >a::after {
     /* border-bottom: 3px solid  #F32F2F; 以为border可能实现不了左右滑动的效果 */
     content: '';
     display: block; /*块级才能设宽度 */
@@ -443,7 +444,9 @@ section.portfolio .works .bottom-small{
 
 
 
-
+[data-x].active{
+    border: 3px solid green;
+}
 
 
 

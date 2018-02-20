@@ -41,7 +41,6 @@ hr{
     display: flex;/*默认显示状态*/
   }
   
-  
   .loading{
     width: 100px;
     height: 100px;
@@ -132,9 +131,6 @@ hr{
     position: relative;
 }
 
-
-
-
 .topNavBar  nav > ul > li.active > a::after,
 .topNavBar  nav > ul > li.highlight >a::after {
     /* border-bottom: 3px solid  #F32F2F; 以为border可能实现不了左右滑动的效果 */
@@ -155,7 +151,6 @@ hr{
     100%{
         width: 100%;
     }
-    
 }
 
 .topNavBar .submenu{
@@ -201,8 +196,8 @@ hr{
     color: #9a9da2;
 }
 .banner{
-    /* banner里面没有其他的元素，img从左到右，再也没有任何东西可以重启高度
-    所以写的高度设定， 最好不要写，出没办法 */
+    /* banner里面没有其他的元素，img从左到右，再也没有任何东西可以冲开高度
+    所以写的高度设定， 最好不要写，这种情况没办法 */
     height: 515px;
     background-image: url(./img/rs-cover.jpg);
     /* border: 1px solid red; */
@@ -366,13 +361,21 @@ section.skills .progressBar{
     background-color: #FAE1E1;
     border-radius: 2px;
     margin: 5px 0px 40px;
+    overflow: hidden; 
 }
 section.skills .progressBar .progress{
-    width: 30%;
+    width: 70%;
     height: 100%;
     background: #E6686A;
     border-radius: 2px;
+    transform: translateX(0);  /* 回到原来位置 */
+    transition: all 1s;
 }
+
+section.skills.offset .progress{
+    transform: translateX(-100%);
+}
+
 section.portfolio{
     text-align: center;
 }
@@ -442,10 +445,12 @@ section.portfolio .works .bottom-small{
     left: 645px;
 }
 
-
-
-[data-x].active{
-    border: 3px solid green;
+[data-x]{
+    transform: tranlateY(0);
+    transition: all .8s;
+}
+[data-x].offset{
+    transform: translateY(180px);
 }
 
 

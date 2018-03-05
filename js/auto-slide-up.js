@@ -1,3 +1,4 @@
+!function(){
 //加入下沉效果
 let specialTags = document.querySelectorAll('[data-x]')
 for (let i = 0; i < specialTags.length; i++) {
@@ -37,3 +38,5 @@ for (let i = 0; i < liTags.length; i++) {
         x.currentTarget.classList.remove('active')
     }
 }
+
+}.call()
